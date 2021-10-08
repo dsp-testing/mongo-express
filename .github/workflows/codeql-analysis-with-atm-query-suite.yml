@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
 
 env:
-  BASE_URL: 'https://atmcodeqlpublicdata.blob.core.windows.net/atmpublic/query-suite/v1.0.2.test+274fc78'
-  CLI_ADDITIONS_CHECKSUM: '96e428b689d1aadbdcda6cfc3dbd4ef61472073dff96055ccfdaf621290dc7446b47bfe2f7daf237e852dcc3a476ca3e363b6099fb13b057d93b5d3086ee74cd'
-  MODEL_CHECKSUM: 'dfca9f673afbf58a0b0112693bceb28decbd1014706a71243273e80a770cb35b'
-  QLPACK_CHECKSUM: '7252df5cf1be78cba3525dd8d2b8c78a8a34fc2dfaee249e950252ee56d44a690aaa41919184c1e70c4d391dd28beb8497bc81e85001957baaea45aa3882a57c'
+  BASE_URL: 'https://atmcodeqlpublicdata.blob.core.windows.net/atmpublic/query-suite/v1.0.3.test+9cbc866'
+  CLI_ADDITIONS_CHECKSUM: 'b13a0ca74fbbda3667b8036e5a20ac379ea6b6d1071820c96b6dd344f8f6f9c17dd43ab55fc85851080251cdd17d03c09352a14b42135a78883c9dd49321c90f'
+  MODEL_CHECKSUM: 'ff4b22b080f9e768e3587b607d84325ac51c7adaf65ae76407072b2d36ebc658'
+  QLPACK_CHECKSUM: '30d4afab02a72dbfedd8a90122bbbb62b67ef1580a40414c5622a2fa2cbbb013820227dcfa8230df9aba15b2d0901079a2451d8b554627ec2caee35e77562ca3'
 
 jobs:
   CodeQL-Build:
@@ -40,13 +40,9 @@ jobs:
           ls -lR ${atm_qlpack_path}
 
           # Add ATM query pack to the CodeQL search path
-          # And control RAM management policy
-          # Set verbosity
           CODEQL_CONFIG_FILE="${RUNNER_TEMP}/codeql_config"
           echo "CODEQL_CONFIG_FILE=${CODEQL_CONFIG_FILE}" >> ${GITHUB_ENV}
-          logdir='${{ github.workspace }}/log'
-          # TODO: the verbosity setting doesn't seem to get through
-          echo "--search-path ${atm_qlpack_path} --off-heap-ram 4096 --verbosity=progress+++ --logdir ${logdir}" >> ${CODEQL_CONFIG_FILE}
+          echo "--search-path ${atm_qlpack_path}" >> ${CODEQL_CONFIG_FILE}
 
           echo "ATM CodeQL CLI config file contents:"
           cat ${CODEQL_CONFIG_FILE}
@@ -106,7 +102,9 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
         with:
+          ram: 5120
           output: '.github/codeql/codeql-javascript-atm/results'
+          threads: 1
 
       - name: Upload SARIF results output
         uses: actions/upload-artifact@v2
@@ -119,9 +117,3 @@ jobs:
         with:
           name: codeql-database
           path: '${{ github.workspace }}/codeql-database'
-
-      - name: Upload CodeQL log
-        uses: actions/upload-artifact@v2
-        with:
-          name: codeql-log
-          path: '${{ github.workspace }}/log'

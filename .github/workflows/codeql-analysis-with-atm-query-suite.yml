@@ -42,7 +42,7 @@ jobs:
           # Add ATM query pack to the CodeQL search path
           CODEQL_CONFIG_FILE="${RUNNER_TEMP}/codeql_config"
           echo "CODEQL_CONFIG_FILE=${CODEQL_CONFIG_FILE}" >> ${GITHUB_ENV}
-          echo "--search-path ${atm_qlpack_path}" >> ${CODEQL_CONFIG_FILE}
+          echo "--additional-packs ${atm_qlpack_path}" >> ${CODEQL_CONFIG_FILE}
 
           echo "ATM CodeQL CLI config file contents:"
           cat ${CODEQL_CONFIG_FILE}

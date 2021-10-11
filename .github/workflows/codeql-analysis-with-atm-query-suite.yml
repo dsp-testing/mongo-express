@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
 
 env:
-  BASE_URL: 'https://atmcodeqlpublicdata.blob.core.windows.net/atmpublic/query-suite/v1.0.3.test+3c50094'
-  CLI_ADDITIONS_CHECKSUM: '44cf0cf14ce8fedc36c6eca4278164c6cff850e03486346e6cd2a2db2f0070da58bc7bbd649270e4e40a0b0769aa246c241020997460063f1e780cfd24c13d12'
+  BASE_URL: 'https://atmcodeqlpublicdata.blob.core.windows.net/atmpublic/query-suite/v1.0.3.test+3a6b9a6'
+  CLI_ADDITIONS_CHECKSUM: 'bdcee682a1ad5239e72ab27c1eb4c66ff16dac369bde962c80c40e063a27b2540814ae889432c617a84061e9687091a5cfaf263197ebbd0dda9d58f4226238f2'
   MODEL_CHECKSUM: 'ff4b22b080f9e768e3587b607d84325ac51c7adaf65ae76407072b2d36ebc658'
-  QLPACK_CHECKSUM: 'd1e359a923c6c8dff3b29c9df27b436510bca5eefca6a02db9a7fb1ae89d8e553328dfa493f8721b9967c250f30978daeee2428b0da5d2cfdc8cf3bcc50d7b79'
+  QLPACK_CHECKSUM: '54f7aaf11355ac0bad364462d0a180c8e05aa3641020397ef5bdbbe8b992e05417b20c2afde0db1aba74e3e24bd73e3cfd0bdf2d2c737ac81b42ee3bee49c4d7'
 
 jobs:
   CodeQL-Build:

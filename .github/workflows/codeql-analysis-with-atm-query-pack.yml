@@ -46,9 +46,11 @@ jobs:
             -- ${db} javascript-atm-code-scanning.qls
 
       - name: Upload Adaptive Threat Modeling results
+        env:
+
         uses: actions/upload-artifact@v2
         with:
-          name: external-api-atm.sarif
-          path: external-api-atm.sarif
+          name: results.sarif.json
+          path: results.sarif.json
 
 

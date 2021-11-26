@@ -19,6 +19,9 @@ jobs:
           languages: javascript
           db-location: '${{ github.workspace }}/codeql-database'
 
+      - name: Extract CodeQL database
+        uses: github/codeql-action/analyze@v1
+
       - name: Install ATM query pack
         env:
           CODEQL_PATH: ${{ steps.codeql-init.outputs.codeql-path }}

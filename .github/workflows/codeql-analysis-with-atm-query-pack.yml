@@ -16,7 +16,6 @@ jobs:
         uses: github/codeql-action/init@v1
         with:
           tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20211126/codeql-bundle-linux64.tar.gz
-          config-file: ./.github/codeql/codeql-config.yml
           languages: javascript
           db-location: '${{ github.workspace }}/codeql-database'
 

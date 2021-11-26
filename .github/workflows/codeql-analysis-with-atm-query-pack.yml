@@ -3,8 +3,6 @@ name: "CodeQL + ATM analysis"
 on:
   workflow_dispatch:
 
-env:
-
 jobs:
   CodeQL-Build:
     runs-on: ubuntu-latest
@@ -27,4 +25,5 @@ jobs:
           CODEQL_PATH: ${{ steps.codeql-init.outputs.codeql-path }}
         run: |
           codeql pack download codeql/javascript-experimental-atm-queries
+  
 

@@ -1,0 +1,30 @@
+name: "CodeQL + ATM analysis"
+
+on:
+  workflow_dispatch:
+
+env:
+
+jobs:
+  CodeQL-Build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        id: codeql-init
+        uses: github/codeql-action/init@v1
+        with:
+          tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20211126/codeql-bundle-linux64.tar.gz
+          config-file: ./.github/codeql/codeql-config.yml
+          languages: javascript
+          db-location: '${{ github.workspace }}/codeql-database'
+
+      - name: Install ATM query pack
+        env:
+          CODEQL_PATH: ${{ steps.codeql-init.outputs.codeql-path }}
+        run: |
+          codeql pack download codeql/javascript-experimental-atm-queries
+

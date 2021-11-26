@@ -23,6 +23,6 @@ jobs:
         env:
           CODEQL_PATH: ${{ steps.codeql-init.outputs.codeql-path }}
         run: |
-          codeql pack download codeql/javascript-experimental-atm-queries
+          ${CODEQL_PATH} pack download codeql/javascript-experimental-atm-queries
   
 

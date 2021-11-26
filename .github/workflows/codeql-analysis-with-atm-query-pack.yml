@@ -31,7 +31,7 @@ jobs:
         run: |
           set -exu
 
-          db="${RUNNER_TEMP}/codeql_databases/javascript"
+          db="${{ github.workspace }}/codeql-database"
 
           ${CODEQL_PATH} database analyze \
             --insecurely-load-models-from-packs \

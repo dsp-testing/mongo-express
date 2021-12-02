@@ -1,6 +1,7 @@
 name: "CodeQL Analysis with ATM"
 
-on: push
+on:
+  workflow_dispatch:
 
 env:
   CODEQL_ACTION_EXTRA_OPTIONS: >-

@@ -36,7 +36,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@6a9a623c776ba2f0bf524bab14b5fd01ec12ad1d
         with:
-          tools: tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20211215/codeql-bundle-linux64.tar.gz
+          tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20211215/codeql-bundle-linux64.tar.gz
           languages: javascript
 
       - name: Perform CodeQL Analysis

@@ -41,5 +41,5 @@ jobs:
           tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20211215/codeql-bundle-linux64.tar.gz
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@fa3d4dade421aa2f5d4784f698b9931fb5a373bf
+        uses: github/codeql-action/analyze@9703f2e3b044dca7fd7ac286980013077dbd0c06
 
